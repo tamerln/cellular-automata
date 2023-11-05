@@ -1,9 +1,22 @@
 //create grid with nested for loops
 let size = 16;
-let rowList = [];
+let ruleset = '';
+const cells = document.querySelectorAll(".cells");
+const rows = document.querySelectorAll(".row");
+const changeSize = document.querySelector("#sizechange");
+const ruleSelector = document.querySelector("#ruleselector");
 
 
-let ruleNumber = 4;
+
+changeSize.addEventListener("click", function(e) {
+  let value = window.prompt("please enter desired grid size", 16);
+  createGrid(value);
+})
+
+ruleSelector.addEventListener("click", function(e) {
+  let value = window.prompt("please enter the rule you would like to see", 30);
+  toBinary(value);
+})
 
 function createGrid(size) {
 const container = document.querySelector("#container");
@@ -18,12 +31,11 @@ for (let i = 0; i < size; i++) {
     cell.classList.add("cell");
   }
 }
-
+initialize();
 
   }
 
-createGrid(16);
-initialize();
+
 
 //convert rule # to binary
 function toBinary(ruleNumber) {
@@ -40,8 +52,9 @@ for (let i = 128; i >= 1; i = i/2) {
     counter = counter - i;
   }
 }
-applyRules(rule);
 console.log(rule);
+applyRules(rule);
+
 }
 
 //!!!!!!!!!!!INITIALIZE WITH MIDDLE TOP CELL FILLED IN
@@ -73,28 +86,29 @@ function initialize() {
        (leftCell.style.backgroundColor === "black" ? 1 : 0) +
        (centerCell.style.backgroundColor === "black" ? 1 : 0) +
        (rightCell.style.backgroundColor === "black" ? 1 : 0);
+        
+      //  if (ruleset === "111") {
+      //     currentRowCells[j].style.backgroundCo
+      //  } else if (ruleset === "110") {
     
-       if (ruleset === "111") {
-          currentRowCells[j].style.backgroundCo
-       } else if (ruleset === "110") {
+      //  } else if (ruleset === "101") {
     
-       } else if (ruleset === "101") {
+      //  } else if (ruleset === "100") {
     
-       } else if (ruleset === "100") {
-    
-       } else if (ruleset === "011") {
+      //  } else if (ruleset === "011") {
        
-       } else if (ruleset === "010") {
+      //  } else if (ruleset === "010") {
     
-       } else if (ruleset === "001") {
+      //  } else if (ruleset === "001") {
     
-       } else if (ruleset === "000") {
+      //  } else if (ruleset === "000") {
     
-       }
+      //  }
 
       }
     }
-  }
+    console.log(ruleset); 
+   }
 //how to access first row??? second row?? etc
   //put all sibilings in container div into an array. 
 
